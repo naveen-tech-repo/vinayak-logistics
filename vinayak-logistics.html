@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinayak Logistics</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Poppins", sans-serif; background-color: #f8f9fa; color: #333; scroll-behavior: smooth; }
+
+    /* NAVBAR */
+    nav {
+      background-color: #004aad;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      color: white;
+    }
+    nav img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+      padding: 5px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    /* ADDRESS */
+    .address {
+      font-size: 0.9rem;
+      color: #fff;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      color: white;
+      background: linear-gradient(to bottom, #004aad, #00357a);
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* CAROUSEL (Fixed cropping issue) */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      height: auto;
+      margin: 30px auto;
+      text-align: center;
+      background: #f8f9fa;
+    }
+    .carousel img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;  /* Prevents image cutting */
+      display: none;
+      margin: 0 auto;
+    }
+    .carousel img.active {
+      display: block;
+      animation: fade 1s ease-in-out;
+    }
+    @keyframes fade { from { opacity: 0.4; } to { opacity: 1; } }
+
+    /* ABOUT */
+    #about {
+      padding: 50px 20px;
+      text-align: center;
+      background: white;
+    }
+    #about h2 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+    #about p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    /* SERVICES */
+    #services {
+      padding: 50px 20px;
+      background: #f0f4ff;
+    }
+    #services h2 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 30px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .service-card h3 {
+      color: #004aad;
+      margin-bottom: 10px;
+    }
+
+    /* ENQUIRY */
+    #enquiry {
+      background: white;
+      padding: 50px 20px;
+    }
+    #enquiry h2 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 30px;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea, button {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background: #004aad;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover { background: #00357a; }
+
+    /* FOOTER */
+    footer {
+      background: #004aad;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+    }
+
+    /* WHATSAPP BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      width: 55px;
+      height: 55px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 28px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+    .whatsapp-float i {
+      margin-top: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .address {
+        text-align: center;
+        margin-top: 10px;
+      }
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .carousel img { max-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <img src="logo.jpeg.png" alt="Vinayak Logistics Logo" />
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
+    </ul>
+    <div class="address">
+      Near Grewal Petrol Pump, Delhi Road, Hisar - 125001<br>
+      📞 +91 98765 43210
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <header>
+    <h1>Vinayak Logistics</h1>
+    <p>Reliable Tempo & Goods Transport Services Across India</p>
+  </header>
+
+  <!-- IMAGE CAROUSEL -->
+  <div class="carousel">
+    <img src="tata407.jpeg" class="active" alt="Truck 1" />
+    <img src="bolero.jpeg" alt="Truck 2" />
+    <img src="ace.jpeg.png" alt="Truck 3" />
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Vinayak Logistics is a trusted name in goods transport and tempo services across India.
+      With a strong fleet of Tata Ace, Bolero Pickups, and commercial trucks, we ensure safe, on-time, and cost-effective delivery.
+      Our mission is to simplify logistics for individuals and businesses by offering transparent pricing, GPS tracking, and reliable customer support.
+      <br><br>
+      <strong>Business Details:</strong><br>
+      <b>Business Name:</b> Vinayak Logistics<br>
+      <b>Address:</b> Near Grewal Petrol Pump, Delhi Road, Hisar - 125001, Haryana<br>
+    </p>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Local Tempo Services</h3>
+        <p>Quick, affordable and reliable city-wise goods transport.</p>
+      </div>
+      <div class="service-card">
+        <h3>Intercity Goods Transport</h3>
+        <p>Pan-India door-to-door logistics for heavy and light cargo.</p>
+      </div>
+      <div class="service-card">
+        <h3>Mini Truck Rentals</h3>
+        <p>Rent Tata Ace, Bolero Pickup, or Eicher trucks for local deliveries.</p>
+      </div>
+      <div class="service-card">
+        <h3>Corporate Logistics</h3>
+        <p>Warehouse-to-store and B2B distribution with reliability & tracking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY SECTION -->
+  <section id="enquiry">
+    <h2>Send an Enquiry</h2>
+    <form id="enquiryForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="phone" placeholder="Phone Number" required />
+      <input type="email" id="email" placeholder="Email Address" />
+      <textarea id="message" rows="4" placeholder="Your Enquiry" required></textarea>
+      <button type="submit">Submit Enquiry</button>
+    </form>
+    <p id="responseMessage" style="color:green; text-align:center; margin-top:10px;"></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Vinayak Logistics | All Rights Reserved  
+  </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+    <i>💬</i>
+  </a>
+
+  <script>
+    // Carousel functionality
+    const images = document.querySelectorAll('.carousel img');
+    let index = 0;
+    setInterval(() => {
+      images[index].classList.remove('active');
+      index = (index + 1) % images.length;
+      images[index].classList.add('active');
+    }, 3000);
+
+    // Enquiry form message
+    document.getElementById("enquiryForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("responseMessage").textContent =
+        "✅ Thank you! Your enquiry has been received. We'll contact you soon.";
+      this.reset();
+    });
+  </script>
+</body>
+</html>
