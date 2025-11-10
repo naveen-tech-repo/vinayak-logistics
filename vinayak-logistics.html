@@ -14,16 +14,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      padding: 10px 30px;
+      padding: 6px 25px; /* smaller navbar */
       position: sticky;
       top: 0;
       z-index: 100;
       color: white;
     }
     nav img {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       background-color: white;
       padding: 5px;
@@ -31,12 +30,16 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      justify-content: center; /* center menu */
+      flex: 1; /* take center space */
+      gap: 40px;
+      margin: 0;
     }
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: 500;
+      font-size: 1rem;
       transition: 0.3s;
     }
     nav ul li a:hover {
@@ -45,10 +48,11 @@
 
     /* ADDRESS */
     .address {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #fff;
       line-height: 1.4;
       text-align: right;
+      min-width: 200px;
     }
 
     /* HEADER */
@@ -56,22 +60,21 @@
       text-align: center;
       color: white;
       background: linear-gradient(to bottom, #004aad, #00357a);
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     header p {
       margin-top: 10px;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
-    /* CAROUSEL (Fixed cropping issue) */
+    /* CAROUSEL */
     .carousel {
       position: relative;
       overflow: hidden;
       max-width: 100%;
-      height: auto;
       margin: 30px auto;
       text-align: center;
       background: #f8f9fa;
@@ -80,7 +83,7 @@
       width: 100%;
       height: auto;
       max-height: 500px;
-      object-fit: contain;  /* Prevents image cutting */
+      object-fit: contain;
       display: none;
       margin: 0 auto;
     }
@@ -195,25 +198,25 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       z-index: 100;
     }
-    .whatsapp-float i {
-      margin-top: 13px;
-    }
+    .whatsapp-float i { margin-top: 13px; }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         text-align: center;
+        padding: 10px;
       }
       nav ul {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 20px;
       }
       .address {
         text-align: center;
         margin-top: 10px;
       }
-      header h1 { font-size: 2rem; }
+      header h1 { font-size: 1.8rem; }
       header p { font-size: 1rem; }
       .carousel img { max-height: 300px; }
     }
@@ -223,32 +226,32 @@
 
   <!-- NAVIGATION -->
   <nav>
-    <img src="logo.jpeg.png" alt="Vinayak Logistics Logo" />
+<img src="logo.jpeg.png" alt="Vinayak Logistics Logo" style="width:90px; height:90px;" />
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Our Services</a></li>
       <li><a href="#enquiry">Enquiry</a></li>
     </ul>
     <div class="address">
       Near Grewal Petrol Pump, Delhi Road, Hisar - 125001<br>
-      📞 +91 98765 43210
+      📞 +91 9254894114 Anil.
     </div>
   </nav>
 
-  <!-- HERO HEADER -->
+  <!-- HEADER -->
   <header>
     <h1>Vinayak Logistics</h1>
     <p>Reliable Tempo & Goods Transport Services Across India</p>
   </header>
 
-  <!-- IMAGE CAROUSEL -->
+  <!-- CAROUSEL -->
   <div class="carousel">
-    <img src="tata407.jpeg" class="active" alt="Truck 1" />
+    <img src="tata407.jpg" class="active" alt="Truck 1" />
     <img src="bolero.jpeg" alt="Truck 2" />
     <img src="ace.jpeg.png" alt="Truck 3" />
   </div>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section id="about">
     <h2>About Us</h2>
     <p>
@@ -262,7 +265,7 @@
     </p>
   </section>
 
-  <!-- SERVICES SECTION -->
+  <!-- SERVICES -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="services-grid">
@@ -285,7 +288,7 @@
     </div>
   </section>
 
-  <!-- ENQUIRY SECTION -->
+  <!-- ENQUIRY -->
   <section id="enquiry">
     <h2>Send an Enquiry</h2>
     <form id="enquiryForm">
@@ -303,13 +306,13 @@
     © 2025 Vinayak Logistics | All Rights Reserved  
   </footer>
 
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/919254894114" class="whatsapp-float" target="_blank">
     <i>💬</i>
   </a>
 
   <script>
-    // Carousel functionality
+    // Carousel
     const images = document.querySelectorAll('.carousel img');
     let index = 0;
     setInterval(() => {
@@ -318,7 +321,7 @@
       images[index].classList.add('active');
     }, 3000);
 
-    // Enquiry form message
+    // Enquiry Form
     document.getElementById("enquiryForm").addEventListener("submit", function(e) {
       e.preventDefault();
       document.getElementById("responseMessage").textContent =
